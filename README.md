@@ -7,7 +7,7 @@ C++ - Windows, Linux, Mac - <a href="http://www.quickfixengine.org/">QuickFix</a
 
 C# - Windows – <a href="http://quickfixn.org/">QuickFix/N</a>
 
-Java – any OS with Java VM – <a href="http://www.quickfixj.org/>QuickFix/J</a>
+Java – any OS with Java VM – <a href="http://www.quickfixj.org/">QuickFix/J</a>
 
 ## How to Get started
 
