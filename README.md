@@ -17,3 +17,4 @@ Java – any OS with Java VM – <a href="http://www.quickfixj.org/>QuickFix/J</
 4. For FIX user support please contact the support team at api@fxcm.com
 5. You can find sample codes, core concepts and many more from FIX wiki page
 [**FIX API WIKI**](https://apiwiki.fxcorporate.com/doku.php?id=fix_api/)
+6. FXCM introduced a short verion of live feed, [Click here](https://docs.fxcorporate.com/api-message-info.pdf) for more detail.
