@@ -1,0 +1,39 @@
+# Default settings. These settings are inherited by each
+# individual session found below
+[DEFAULT]
+
+BeginString=FIX.4.4
+ConnectionType=initiator
+HeartBtInt=30
+FileStorePath=.\Store
+FileLogPath=.\Logs
+
+# Start and End times for the FIX session (in UTC)
+StartDay=Sunday
+StartTime=21:15:00
+EndDay=Friday
+EndTime=20:00:00
+
+UseDataDictionary=Y
+DataDictionary=FIXFXCM10.xml
+ValidateUserDefinedFields=N
+ValidateFieldsHaveValues=N
+ValidateFieldsOutOfOrder=N
+
+ReconnectInterval=20
+ResetOnDisconnect=Y
+ResetSeqNumFlag=Y
+SendResetSeqNumFlag=Y
+ContinueInitializationOnError=Y
+
+# Session specific settings along with FIX credentials 
+# supplied by FXCM
+[SESSION]
+
+SenderCompID=someID
+TargetCompID=FXCM
+SocketConnectHost=someHost
+SocketConnectPort=somePort
+TargetSubID=someTargetID
+Username=someUsername
+Password=somePassword
