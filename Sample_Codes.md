@@ -81,7 +81,7 @@
 	
 ### Subscribe to All Symbols: C++
 
-void FixApplication::onMessage(const FIX44::TradingSessionStatus& tss, const SessionID& session_ID)
+	void FixApplication::onMessage(const FIX44::TradingSessionStatus& tss, const SessionID& session_ID)
 	{
 		FIX44::MarketDataRequest request;
 		request.setField(MDReqID(NextRequestID()));
@@ -128,6 +128,7 @@ void FixApplication::onMessage(const FIX44::TradingSessionStatus& tss, const Ses
 	
 ### Create Market Range Order: C++
 In the case of a market range order, we set the OrdType to StopLimit and we must set the StopPx tag. The StopPx tag indicates the worst price we are willing to get filled at; i.e., the stop.
+
 	FIX44::NewOrderSingle order;
 	order.setField(FIX::ClOrdID(NextClOrdID())); 
 	order.setField(FIX::Account(account));
@@ -235,6 +236,7 @@ The entry with limit and stop is a FXCM specific contingency type that allows yo
 	
 ### Create Market Order with Trailing Stop: C++
 In our example below, we use two orders with ELS contingency type (see above for details on ELS). Specifically, we send both a market order and a stop order. What makes this stop order a trailing stop is the existence of the FXCMPegFluctuatePts(9061) tag, which we have enumerated as FXCM_PEG_FLUCTUATE_PTS. This field is set to “10” which means our stop will trail the market at a rate of 10 pips. 
+
 	FIX44::NewOrderList olist;
 	olist.setField(FIX::ListID(next_ClOrdID())); 
 	olist.setField(FIX::TotNoOrders(2)); 
