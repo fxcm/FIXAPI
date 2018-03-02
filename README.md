@@ -17,3 +17,7 @@ C# - Windows – <a href="http://quickfixn.org/">QuickFix/N</a>
 
 Java – any OS with Java VM – <a href="http://www.quickfixj.org/">QuickFix/J</a>
 
+## Note:
+o	This is for personal use and abides by our [EULA](https://www.fxcm.com/uk/forms/eula/)
+
+o	For more information, you may contact us: api@fxcm.com
