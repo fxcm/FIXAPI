@@ -6,7 +6,7 @@ FIX API using FIX Protocol 4.4 designed for real-time, custom institutional inte
 1) A FXCM TSII account. open account at [here](https://www.fxcm.com/)
 2) In order to obtain live access, FXCM requires a live account minimum balance of $5,000 USD. Please contact [FXCM client support](https://www.fxcm.com/support/contact-client-support/) for requesting FIX credentials and more.
 3) You can request documentation by signing our [EULA](https://www.fxcm.com/forms/eula/)
-4) Sample codes and core concepts, please check our [**FIX WIKI**](https://apiwiki.fxcorporate.com/doku.php?id=fix_api/)
+4) FXCM data dictionary [FIXFXCM10.xml](https://apiwiki.fxcorporate.com/api/fix/docs/FIXFXCM10.xml)
 5) Sample programs in C++/C#/Java are [here](https://apiwiki.fxcorporate.com/doku.php?id=example_projects)
 6) Want to test on demo? please send request to [client support](https://www.fxcm.com/support/contact-client-support/)
 
