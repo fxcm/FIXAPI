@@ -2,6 +2,8 @@
 
 FIX API using FIX Protocol 4.4 designed for real-time, custom institutional interface which push up to 250 price update per second (not available on other APIs). It is our fastest and most popular option. You will get full range of trading order types available at FXCM. An FXCM TSII account with a $5,000 minimum balance is required.
 
+In order to establish and maintain FIX connectivity, you must have an application that manages a network connection and which sends/receives FIX messages. An application that does this is referred to as a FIX engine. Today there are numerous commercial FIX engines as well as open-source alternatives, the most known of which is [QuickFIX](http://www.quickfixengine.org/)
+
 ## How to start:
 1) A FXCM TSII account. open account at [here](https://www.fxcm.com/)
 2) In order to obtain live access, FXCM requires a live account minimum balance of $5,000 USD. Please contact [FXCM client support](https://www.fxcm.com/support/contact-client-support/) for requesting FIX credentials and more.

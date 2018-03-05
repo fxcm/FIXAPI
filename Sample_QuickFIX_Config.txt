@@ -1,3 +1,18 @@
+# After requesting FIX access for an account, you will the credentials necessary to connect. 
+# The following is a list of these items with description:
+
+# SocketConnectHost and SocketConnectPort
+# The host and port that you will connect to
+# SenderCompID
+# An identifier assigned to you for the FIX session.
+# TargetCompID
+# An identifier assigned to FXCM for the FIX session.
+# TargetSubID
+# A sub-identifier used to route messages to a specific trade server
+# These FIX credentials are of primary concern at the time you configure your application. 
+# Refer to the configuration documentation of the FIX engine you are using in order to determine where this information must be set. 
+# If you are using QuickFIX, then you can refer here: Configuring QuickFIX http://www.quickfixengine.org/quickfix/doc/html/configuration.html.
+
 # Default settings. These settings are inherited by each
 # individual session found below
 [DEFAULT]

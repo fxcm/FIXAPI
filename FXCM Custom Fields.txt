@@ -1,0 +1,77 @@
+## FXCM Custom fields
+
+From TradingSessionStatus(h):
+	FXCMSymPrecision (9001)
+	This shows the numerical precision of the security. For example, the USD/JPY security would show a value of 3 for this field because it is quoted to 3 decimal places. AUD/USD would show a value of 5 for this field given that it is quoted to 5 decimal places.
+
+	FXCMSymPointSize (9002)
+	The size of the point (pip) of the security. For example, the EUR/USD security would show a value of 0.0001 for this field. This is useful for many purposes, such as calculating the profit or loss of a position in points.
+
+	FXCMSymInterestBuy (9003)
+	FXCMSymInterestSell (9004)
+	the price is in the currency of your account for the default lot size for your server. If your account is in USD and server default lot size is 10k For example for CAD/JPY 9003(FXCMSymInterestBuy) = 0.64 - you will get $0.64 for 10k 9004(FXCMSymInterestSell) = -1.48 - you will pay $1.48 for 10k The server default lot size you can get from same report from tags: 9017=BASE_UNIT_SIZE 9018=10000
+
+	You can get it also from Trading Station in Simple Dealing Rates under columns Roll S and Roll B
+
+	FXCMProductID (9080)
+	FXCMProductID distinguishes each security by its type. There are 5 types of securities: 1-Forex, 2-Index, 3-Commodity, 4-Treasury, and 5-Bullion. As an example, GBP/USD would obviously show a value of 1 for this field, but the CFD Index JPY225 would show a value of 2.
+
+	FXCMCondDistStop (9090)
+	The value of this field indicates the minimum distance for stop orders on an open position. The distance referred to here is the distance between your stop order price and the current market price. For example, assume you want to place a stop order on an existing buy position. Your stop order price then must meet or exceed the minimum distance from the current bid (sell) price.
+
+	FXCMCondDistLimit (9091)
+	The value of this field indicates the minimum distance for limit orders on an open position. The distance referred to here is the distance between your limit order price and the current market price. For example, assume you want to place a limit order on an existing buy position. Your limit order price then must meet or exceed the minimum distance from the current Bid (Sell) price.
+
+	FXCMCondDistEntryStop (9092)
+	This field indicates the minimum distance for new stop entry (pending) orders. The distance referred to here is the distance between your stop entry order price and the current market price. For example, assume you wanted to place a stop entry order to buy. The price of this order must or exceed the minimum distance from the current Ask (Buy) price.
+
+	FXCMCondDistEntryLimit (9093)
+	This field indicates the minimum distance for new limit entry (pending) orders. The distance referred to here is the distance between your limit entry order price and the current market price. For example, assume you wanted to place a limit entry order to buy. The price of this order must or exceed the minimum distance from the current Ask (Buy) price.
+
+	FXCMMaxQuantity (9094)
+	This is the largest quantity for which you can place an order.
+
+	FXCMMinQuantity (9095)
+	This is the smallest quantity for which you can place an order. This field only applies to CFD products. The minimum trade size for Forex must be obtained from the Quantity(53) field from CollateralReport.
+
+	FXCMTradingStatus (9096)
+	This field indicates whether the trading desk is opened or closed. When trading is open, this will return “O” for Open. When trading is closed, this will return “C” for Closed. Forex securities are open throughout the entire trading week. However, CFD securities such as Indices often have daily schedules and/or daily break times. In order to determine if a CFD security is both Open and Tradeable, you must refer to the MarketDataSnapshot message. See Requesting Market Data for more on this topic.
+
+From MarketDataSnapshotFullRefresh(W):
+	Trading Status
+	Field: QuoteType(537) 
+	Field: QuoteCondition(276)
+
+	To determine if a specific instrument is open and available for trading, you must refer to the QuoteType(537) and QuoteCondition(276) tags from this message. With QuoteType, a value of 0 = Indicative, and a value of 1 = Tradeable. With QuoteCondition, a value of “A” = Open, and a value of “B” = Closed.
+
+From CollateralReport(BA):
+	Minimum Order Qty. - Forex
+	Field: Quantity(53)
+
+	The value of this field represents the minimum quantity for which you can place a Forex order. This minimum quantity is specific to the trading account in the same CollateralReport. The Account(1) field can be used to obtain the AccountID. Most accounts are defaulted to 1,000 (Micro Lot).
+	
+## FXCM System Parameters:
+
+The following is a list of parameter names. You will see these returned as the values for Tag 9017, FXCMParamName. The value of this parameter is found in Tag 9018, FXCMParamValue.
+
+	BASE_CRNCY
+	This parameter shows the currency of the account. Margin, P/L, balance, and equity will all be expressed in this currency. An example base currency would be “USD”.
+
+	SERVER_TIME_UTC
+	The value of this parameter indicates whether or not time values sent from the server will be expressed in UTC. If this is the case, the value of this parameter will be set to “UTC.” If the value of this parameter is not “UTC,” then time values sent from the server will be expressed in the local time zone of the server, which can be checked with the BASE_TIME_ZONE parameter.
+
+	BASE_TIME_ZONE
+	This parameter shows the name of the time zone of the server. For example, “America/New_York.”
+
+	COND_DIST
+	This parameter shows the minimum recommended distance between the price of new stop or limit orders and the current market price. This is expressed in pips and it is generally defaulted to 0.10. It important to note that CFD securities often have their own minimum stop or limit distances, which should be checked in the SecurityList message.
+
+	COND_DIST_ENTRY
+	This parameter shows the minimum recommended distance between the price of new stop entry or limit entry orders and the current market price. This is expressed in pips and it is generally defaulted to 0.10. It important to note that CFD securities often have their own minimum stop entry or limit entry distances, which should be checked in the SecurityList message.
+
+	BASE_UNIT_SIZE
+	The minimum order size allowed for Forex securities. For example, 1,000 (Micro Lot) or 10,000 (Mini Lot). Note that in order to check the minimum order size for CFD securities, it is necessary to check the FXCMMinQuantity (9095) Tag from the SecurityList message. It is recommended that your application relies on this field when determining minimum order size for all securities, including Forex.
+
+	END_TRADING_DAY
+	The value of this parameter contains the time when the trading day ends. The time is expressed in the format hh:mm:ss, where hh is in 24-hour format, mm is minutes, and ss is seconds. The time is always in UTC time. For example, 21:00:00.
+
