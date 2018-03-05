@@ -26,5 +26,5 @@ VC++ 2010 Solution
 	
 QuickFIX FIX Engine
 	
-[Download](https://apiwiki.fxcorporate.com/api/examples/lamm/LammFix.zip)
+[Download](https://apiwiki.fxcorporate.com/api/fix/examples/lamm/LammFix.zip)
 
