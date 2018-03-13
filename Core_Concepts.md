@@ -48,7 +48,7 @@ TradingSessionStatus should be requested upon successful Logon and subscribed to
 	 
 		 cout << param_name << " - " << param_value << endl;
 	}
-FIX::Session::sendToTarget(request,session_id);
+	FIX::Session::sendToTarget(request,session_id);
 
 #### CollateralInquiry (BB)
 CollateralInquiry is used to request the CollateralReport(BA) message from FXCM. This message contains important account related information such as the account number. With the exception of FIX sessions used solely for market data, you should include this message in your login sequence.
@@ -287,3 +287,6 @@ FIX API does not have a field which represents account equity. Equity is a real-
 
 StartCash(921)
 The StartCash (921) field from CollateralReport is the equity value of the account at 5:00pm EST (New York). This can be used as a snapshot of what the equity was at that time. This value will include the account balance and any profit or loss on open trades.
+
+#### Want to retrieve short version of market price:
+FXCM give cleint an oppertunity to retrieve market price for just Bid/Ask, please follow instructions at [here](https://docs.fxcorporate.com/api-message-info.pdf)
