@@ -12,6 +12,26 @@ In order to establish and maintain FIX connectivity, you must have an applicatio
 5) Sample programs in C++/C#/Java are [here](https://apiwiki.fxcorporate.com/doku.php?id=example_projects)
 6) Want to test on demo? please send request to API support api@fxcm.com.
 
+## Getting Connected:
+There are two ways to Logon, one is within the Logon message should include your Username(553) and Password(554). The other one is send Username(553) and Password(554) on User Request (35=BE). It is also important to note here that FXCM requires the TargetSubID on all messages, including your Logon. If you are not receiving any responses to your Logon message, it is likely because you have not included TargetSubID
+
+	Example Logon Messages
+	
+	//Send Username/Password on Logon (35=A)
+	8=FIX.4.4|9=114| 35=A |34=1| 49=fx1294946_client1| 52=20120927-13:15:34.754| 56=FXCM |57=U100D1| 553=fx1294946| 554=123| 98=0 |108=30 |141=Y| 10=146|
+
+	//Send Username/Password on User Request(35=BE)
+	8=FIX.4.4|9=114|35=BE|34=2|49=fx1294946_client1|52=20140515-00:29:11.372|56=FXCM|57=U100D1|553=fx1294946|554=1234|923=1|924=1|10=150|
+
+	//FXCM Logon response 
+	8=FIX.4.4|9=92| 35=A| 34=1| 49=FXCM| 50=U100D1 |52=20120927-13:15:34.810| 56=fx1294946_client1| 98=0| 108=30| 141=Y| 10=187|
+  
+
+## Requesting Market Data:
+The MarketDataSnapshotFullRefresh(W) message contains the updates to market data. It is obtained as a response to the MarketDataRequest(V) message. FIX connections are then subscription based for the market data; meaning, you must request it to receive it.
+
+The types of data you can receive, such as the Bid price or Offer price, are referred to as MDEntryTypes in FIX. FXCM supports the following MDEntryTypes in each message: Bid(0), Offer(1), High Price(7), and Low Price(8). Additional MDEntryTypes such as MDEntryDate, MDEntryTime, QuoteCondition, etc., are found only once within the first repeating group of the message
+
 ## Suggested FIX Protocol package.
 C++ - Windows, Linux, Mac - <a href="http://www.quickfixengine.org/">QuickFix</a>
 
