@@ -32,7 +32,9 @@ There are two ways to Logon, one is within the Logon message should include your
 ## Requesting Market Data:
 The MarketDataSnapshotFullRefresh(W) message contains the updates to market data. It is obtained as a response to the MarketDataRequest(V) message. FIX connections are then subscription based for the market data; meaning, you must request it to receive it.
 
-The types of data you can receive, such as the Bid price or Offer price, are referred to as MDEntryTypes in FIX. FXCM supports the following MDEntryTypes in each message: Bid(0), Offer(1), High Price(7), and Low Price(8). Additional MDEntryTypes such as MDEntryDate, MDEntryTime, QuoteCondition, etc., are found only once within the first repeating group of the message
+The types of data you can receive, such as the Bid price or Offer price, are referred to as MDEntryTypes in FIX. FXCM supports the following MDEntryTypes in each message: Bid(0), Offer(1), High Price(7), and Low Price(8). Additional MDEntryTypes such as MDEntryDate, MDEntryTime, QuoteCondition, etc., are found only once within the first repeating group of the message.
+
+Also we don't have liquidity size information and depth information, only display BBO (best bid offer). 
 
 ## Suggested FIX Protocol package.
 C++ - Windows, Linux, Mac - <a href="http://www.quickfixengine.org/">QuickFix</a>
