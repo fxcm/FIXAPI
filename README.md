@@ -11,7 +11,7 @@ FXCM trading session reset weekly, it opens on Sundays between 5:00 PM ET and 5:
 2) In order to obtain live access, FXCM requires a live account minimum balance of $5,000 USD. Please contact [FXCM client support](https://www.fxcm.com/support/contact-client-support/) for requesting FIX credentials and more.
 3) You can request documentation by signing our [EULA](https://www.fxcm.com/forms/eula/)
 4) FXCM data dictionary [FIXFXCM10.xml](https://apiwiki.fxcorporate.com/api/fix/docs/FIXFXCM10.xml)
-5) Sample programs in C++/C#/Java are [here](https://apiwiki.fxcorporate.com/doku.php?id=example_projects)
+5) Sample programs in C++/C#/Java are [here](https://github.com/fxcm/FIXAPI/tree/master/Sample%20Projects)
 6) Want to test on demo? please send request to API support api@fxcm.com.
 
 ## Getting Connected:
