@@ -85,4 +85,7 @@ If your account is hedging account, get the ticket id tag 9041 from open positio
 	20160404-06:18:07.922 : 8=FIX.4.4 9=489 35=8 34=15 49=FXCM 50=U100D1 52=20160404-06:18:07.634 56=D101546502001_client1 1=01537581 6=0.99631 11=635953582874324718 14=100000 15=AUD 17=819171964 31=0.99631 32=100000 37=225010828 38=100000 39=2 40=1 44=0.99631 54=2 55=AUD/CAD 58=Executed 59=1 60=20160404-06:18:07 99=0 150=F 151=0 211=0 336=FXCM 625=U100D1 835=0 836=0 1094=0 9000=16 9041=89061181 9050=CM 9051=F 9061=0 453=1 448=FXCM ID 447=D 452=3 802=4 523=1537581 803=10 523=d101546502001 803=2 523=Halpert 803=22 523=32 803=26 10=128
 
 
+
+
+
 High Risk Investment Warning: Trading foreign exchange and/or contracts for differences on margin carries a high level of risk, and may not be suitable for all investors. The possibility exists that you could sustain a loss in excess of your deposited funds and therefore, you should not speculate with capital that you cannot afford to lose. Before deciding to trade the products offered by FXCM you should carefully consider your objectives, financial situation, needs and level of experience. You should be aware of all the risks associated with trading on margin. FXCM provides general advice that does not take into account your objectives, financial situation or needs. The content of this Website must not be construed as personal advice. FXCM recommends you seek advice from a separate financial advisor. 
