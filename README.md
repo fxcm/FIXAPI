@@ -36,6 +36,9 @@ The types of data you can receive, such as the Bid price or Offer price, are ref
 
 Also we don't have liquidity size information and depth information, only display BBO (best bid offer). 
 
+## Placing order:
+Please set account number on tag 1, 1=00648329 when you place orders. Otherwise you will get error "No Account specified".
+
 ## Suggested FIX Protocol package.
 C++ - Windows, Linux, Mac - <a href="http://www.quickfixengine.org/">QuickFix</a>
 
