@@ -1,58 +1,110 @@
+
 # FIX API
+> *Based on FIX designed for institutional traders.*
 
-FIX API using FIX Protocol 4.4 designed for real-time, custom institutional interface which push up to 250 price update per second (not available on other APIs). It is our fastest and most popular option. You will get full range of trading order types available at FXCM.
+FIX API using FIX Protocol 4.4 designed for real-time, custom institutional interface which push up to 200 price update per second (not available on other APIs). It is our fastest and most popular solution. You will get full range of trading order types available at FXCM.
 
-In order to establish and maintain FIX connectivity, you must have an application that manages a network connection and which sends/receives FIX messages. An application that does this is referred to as a FIX engine. Today there are numerous commercial FIX engines as well as open-source alternatives, the most known of which is [QuickFIX](http://www.quickfixengine.org/)
+In order to establish and maintain FIX connectivity, you must have an application that manages a network connection and which sends/receives FIX messages. An application that does this is referred to as a FIX engine. Today there are numerous commercial FIX engines as well as open-source alternatives, the most known of which is QuickFIX
 
-FXCM trading session reset weekly, it opens on Sundays between 5:00 PM ET and 5:15 PM ET. and closes on Fridays at 4:55 PM ET
+FXCM trading session reset weekly, it opens on Sundays between 5:00 PM ET and 5:15 PM ET. and closes on Fridays at 4:55 PM ET.
 
-## How to start:
-1) FIX quick start guide at [here](https://github.com/fxcm/FIXAPI/blob/master/FIX_quick_start_guide.docx)
-2) In order to obtain live access, FXCM requires a live account minimum balance of $5,000 USD.
-3) You can request documentation by signing our [EULA](https://www.fxcm.com/forms/eula/)
-4) FXCM data dictionary [FIXFXCM10.xml](https://apiwiki.fxcorporate.com/api/fix/docs/FIXFXCM10.xml)
-5) Sample programs in C++/C#/Java are [here](https://github.com/fxcm/FIXAPI/tree/master/Sample%20Projects)
-6) Want to test on demo? please send request to API support api@fxcm.com.
+Please refer to our [github page](https://github.com/fxcm/FIXAPI)
 
-## Getting Connected:
-There are two ways to Logon, one is within the Logon message should include your Username(553) and Password(554). The other one is send Username(553) and Password(554) on User Request (35=BE). It is also important to note here that FXCM requires the TargetSubID on all messages, including your Logon. If you are not receiving any responses to your Logon message, it is likely because you have not included TargetSubID
+## Contents
+* [Prerequisites](#Prerequisites)
+* [Connecting](#Connecting)
+* [Marketdata](#Marketdata)
+* [Table](#Table)
+* [Order](#Order)
+* [Sample](#Sample)
+* [Disclaimer](#Disclaimer)
 
-	Example Logon Messages
-	
-	//Send Username/Password on Logon (35=A)
-	8=FIX.4.4|9=114| 35=A |34=1| 49=fx1294946_client1| 52=20120927-13:15:34.754| 56=FXCM |57=U100D1| 553=fx1294946| 554=123| 98=0 |108=30 |141=Y| 10=146|
 
-	//Send Username/Password on User Request(35=BE)
-	8=FIX.4.4|9=114|35=BE|34=2|49=fx1294946_client1|52=20140515-00:29:11.372|56=FXCM|57=U100D1|553=fx1294946|554=1234|923=1|924=1|10=150|
+## Prerequisites
 
-	//FXCM Logon response 
-	8=FIX.4.4|9=92| 35=A| 34=1| 49=FXCM| 50=U100D1 |52=20120927-13:15:34.810| 56=fx1294946_client1| 98=0| 108=30| 141=Y| 10=187|
-  
+*	First open a demo TSII account at [here](https://www.fxcm.com/uk/algorithmic-trading/api-trading/)
+*	Send your login to api@fxcm.com to get FIX credentials. 
+*	Request documentation by signing our [EULA](https://www.fxcm.com/forms/eula/). FXCM data dictionary [FIXFXCM10.xml](https://apiwiki.fxcorporate.com/api/fix/docs/FIXFXCM10.xml)
+*	Install software development environment (SDE). For Java, you can try [Eclipse](https://www.eclipse.org/downloads/) or [NetBeans](https://netbeans.org/downloads/),  For C++/C#, please download [Visual studio](https://visualstudio.microsoft.com/downloads/)
+*	You also need to download FIX protocol package. [QuickFix/J or QuickFix/N](http://www.quickfixj.org/)
 
-## Requesting Market Data:
-The MarketDataSnapshotFullRefresh(W) message contains the updates to market data. It is obtained as a response to the MarketDataRequest(V) message. FIX connections are then subscription based for the market data; meaning, you must request it to receive it.
 
-The types of data you can receive, such as the Bid price or Offer price, are referred to as MDEntryTypes in FIX. FXCM supports the following MDEntryTypes in each message: Bid(0), Offer(1), High Price(7), and Low Price(8). Additional MDEntryTypes such as MDEntryDate, MDEntryTime, QuoteCondition, etc., are found only once within the first repeating group of the message.
+## Connecting
+There are two ways to Logon, one is within the Logon message should include your Username(553) and Password(554). The other one is send Username(553) and Password(554) on User Request (35=BE). It is also important to note here that FXCM requires the TargetSubID on all messages, including your Logon.
 
-Also we don't have liquidity size information and depth information, only display BBO (best bid offer). 
+```
+Example Logon Messages
+//Send Username/Password on Logon (35=A)
+8=FIX.4.4|9=114| 35=A |34=1| 49=fx1294946_client1| 52=20120927-13:15:34.754| 56=FXCM |57=U100D1| 553=fx1294946| 554=123| 98=0 |108=30 |141=Y| 10=146|
 
-If you want shrink price data which is 60% of current market price, please take a look at [here](https://docs.fxcorporate.com/api-message-info.pdf)
+//Send Username/Password on User Request(35=BE)
+8=FIX.4.4|9=114|35=BE|34=2|49=fx1294946_client1|52=20140515-00:29:11.372|56=FXCM|57=U100D1|553=fx1294946|554=1234|923=1|924=1|10=150|
 
-## Placing order:
-Please set account number on tag 1, 1=00648329 when you place orders. Otherwise you will get error "No Account specified".
+//FXCM Logon response 
+8=FIX.4.4|9=92| 35=A| 34=1| 49=FXCM| 50=U100D1 |52=20120927-13:15:34.810| 56=fx1294946_client1| 98=0| 108=30| 141=Y| 10=187|
+```
 
-## Suggested FIX Protocol package.
-C++ - Windows, Linux, Mac - <a href="http://www.quickfixengine.org/">QuickFix</a>
+## Marketdata
+*	Subscribe market price with 35=V MarketDataRequest. You will get MarketDataSnapshotFullRefresh(W) 35=W.
+*	The MarketDataSnapshotFullRefresh(W) message contains the updates to market data. It is obtained as a response to the MarketDataRequest(V) message. FIX connections are then subscription based for the market data; meaning, you must request it to receive it.
 
-C# - Windows – <a href="http://quickfixn.org/">QuickFix/N</a>
+*	The types of data you can receive, such as the Bid price or Offer price, are referred to as MDEntryTypes in FIX. FXCM supports the following MDEntryTypes in each message: Bid(0), Offer(1), High Price(7), and Low Price(8). Additional MDEntryTypes such as MDEntryDate, MDEntryTime, QuoteCondition, etc., are found only once within the first repeating group of the message.
 
-Java – any OS with Java VM – <a href="http://www.quickfixj.org/">QuickFix/J</a>
+*	Also we don't have liquidity size information and depth information, only display BBO (best bid offer).
 
-## Note:
-o	This is for personal use and abides by our [EULA](https://www.fxcm.com/uk/forms/eula/)
+*	If you want shrink price data which is 60% of current market price, please take a look at [here](https://docs.fxcorporate.com/api-message-info.pdf)
+```
+8=FIX.4.4|9=497|35=W|34=4|49=FXCM|50=U100D1|52=20180817-13:44:06.495|56=MD_d101968187_client1|55=EUR/JPY|228=1|231=1|460=4|9001=3|9002=0.01|9005=10|9011=0|9020=0|9080=1|9090=0|9091=0|9092=0|9093=0|9094=50000000|9095=1|9096=O|268=4|269=0|270=126.085|271=0|272=20180817|273=13:44:06.000|336=FXCM|625=PSFX|276=A|282=PSFX_DESK|299=FXCM-EURJPY-19288641|537=1|269=1|270=126.093|271=0|272=20180817|273=13:44:06.000|336=FXCM|625=PSFX|276=A|282=PSFX_DESK|299=FXCM-EURJPY-19288641|537=1|269=7|270=126.448|269=8|270=125.567|10=117|
+```
+*	If you want subscribe once and get update been pushed whenever there is update, you need set Subscription request type 263=1 which is snapshot + update.  If 0, you will only get one snapshot. 
+*	You can also subscribe security in list, instead of just one security. 
+```
+8=FIX.4.4|9=134|35=V|34=5|49=d101970033_client2|52=20180822-19:20:49.137|56=FXCM|57=U100D1|262=4|263=1|264=3|265=0|146=1|55=EUR/USD|267=2|269=0|269=1|10=189|
+8=FIX.4.4|9=808|35=V|34=5|49=MD_d101968187_client1|52=20180817-13:44:05.840|56=FXCM|57=U100D1|262=4|263=1|264=0|265=0|146=65|55=USOil|55=AUD/JPY|55=NZD/CAD|55=EUR/CAD|55=USD/ZAR|55=AUS200|55=UKOil|55=EUR/NOK|55=NGAS|55=EUR/AUD|55=USD/HKD|55=EUSTX50|55=GBP/CAD|55=USD/CAD|55=GER30|55=CAD/CHF|55=USD/TRY|55=EUR/TRY|55=Copper|55=HKG33|55=USOilF2|55=GBP/AUD|55=NAS100|55=EUR/CHF|55=TRY/JPY|55=AUD/NZD|55=USD/CHF|55=XAU/USD|55=FRA40|55=USOilF|55=AUD/USD|55=NZD/JPY|55=USD/MXN|55=USDOLLAR|55=CHN50|55=ESP35|55=EUR/NZD|55=UKOilF|55=ZAR/JPY|55=GBP/CHF|55=NZD/USD|55=USD/JPY|55=GBP/NZD|55=SPX500|55=CHF/JPY|55=UK100|55=EUR/USD|55=SOYF|55=GBP/USD|55=EUR/JPY|55=AUD/CHF|55=EUR/GBP|55=XAG/USD|55=US30|55=GBP/JPY|55=NZD/CHF|55=USD/NOK|55=CAD/JPY|55=AUD/CAD|55=Bund|55=USD/SEK|55=EUR/SEK|55=USD/CNH|55=JPN225|55=UKOilF2|267=2|269=0|269=1|10=004|
+```
 
-o	For more information, you may contact us: api@fxcm.com
+## Table
+*	Send Collateral Inquiry 35=BB, you will get Collateral report 35=BA, which contains account information
+```
+8=FIX.4.4|9=88|35=BB|34=4|49=d101970033_client2|52=20180817-20:17:27.716|56=FXCM|57=U100D1|263=1|909=3|10=203|
+8=FIX.4.4|9=361|35=BA|34=5|49=FXCM|50=U100D1|52=20180817-20:17:27.737|56=d101970033_client2|1=01960313|53=1000|336=FXCM|625=U100D1|898=0|901=1000562.37|908=4647057334|909=3|910=0|911=1|912=Y|921=1000562.37|922=1000562.37|9038=0|9045=N|9046=0|9047=0|453=1|448=FXCM ID|447=D|452=3|802=5|523=1960313|803=10|523=d101970033|803=2|523=fix-test138|803=22|523=32|803=26|523=Y|803=4000|10=033|
+```
+*	For Open positions, send Request for positions 35=AN with 724=0 (positions). You will get position report 35=AP for each open position. If you don’t have open position, you will get “No open positions” in message 35=AO
 
-## Disclaimer:
+```
+Sample for open positions request:
+8=FIX.4.4|9=149|35=AN|34=5|49=d101968168_client1|52=20151111-21:01:12.396|56=FXCM|57=U100D1|1=01958448|60=20151111-21:01:12.395|263=1|581=6|710=4|715=20151111|724=0|10=085|
+ 
+Sample for open position.
+8=FIX.4.4|9=565|35=AP|34=8|49=FXCM|50=U100D1|52=20151111-20:19:59.929|56=d101968168_client1|1=01958448|11=FIX.4.4:d101968168_client1->FXCM/U100D1-1437981786837-10|15=EUR|37=207486895|55=EUR/USD|60=20150727-07:23:08|325=N|336=FXCM|526=fix_example_test|581=6|625=U100D1|710=4|715=20151111|721=3684204026|724=0|727=2|728=0|730=1.10728|731=1|734=0|912=N|9000=1|9038=260|9040=-21.16|9041=80775478|9042=20150727-07:23:08|9053=0.8|453=1|448=FXCM ID|447=D|452=3|802=4|523=32|803=26|523=d101968168|803=2|523=fix-test112|803=22|523=1958448|803=10|702=1|703=TQ|704=10000|753=1|707=CASH|708=0|10=137|
 
-Trading forex/CFDs on margin carries a high level of risk and may not be suitable for all investors as you could sustain losses in excess of deposits. Leverage can work against you. The products are intended for retail and professional clients. Due to the certain restrictions imposed by the local law and regulation, German resident retail client(s) could sustain a total loss of deposited funds but are not subject to subsequent payment obligations beyond the deposited funds. Be aware and fully understand all risks associated with the market and trading. Prior to trading any products, carefully consider your financial situation and experience level. If you decide to trade products offered by FXCM Australia Pty. Limited (“FXCM AU”) (AFSL 309763), you must read and understand the [Financial Services Guide](https://docs.fxcorporate.com/financial-services-guide-au.pdf), [Product Disclosure Statement](https://www.fxcm.com/au/legal/product-disclosure-statements/), and [Terms of Business](https://docs.fxcorporate.com/tob_au_en.pdf). Any opinions, news, research, analyses, prices, or other information is provided as general market commentary, and does not constitute investment advice. FXCM will not accept liability for any loss or damage, including without limitation to, any loss of profit, which may arise directly or indirectly from use of or reliance on such information. FXCM will not accept liability for any loss or damage, including without limitation to, any loss of profit, which may arise directly or indirectly from use of or reliance on such information.
+```
+*	For closed positions, please send positions request 35=AN with 724=1 (Trades). You will receive position report in 35=AP
+
+```
+Sample for closed positions request:
+8=FIX.4.4|9=177|35=AN|34=6|49=d101968168_client1|52=20151111-21:01:12.400|56=FXCM|57=U100D1|1=01958448|60=20151111-21:01:12.400|263=1|581=6|710=5|715=20151111|724=1|9012=20150311|9014=20151112|10=110|
+ 
+Sample for closed position.
+8=FIX.4.4|9=702|35=AP|34=20|49=FXCM|50=U100D1|52=20151111-21:01:11.936|56=d101968168_client1|1=01958448|11=FIX.4.4:d101968168_client1->FXCM/U100D1-1428599035518-4|15=EUR|37=202027586|55=EUR/USD|60=20150519-03:30:43|325=N|336=FXCM|526=fix_example_test|581=6|625=U100D1|710=5|715=20151111|721=3533878441|724=1|727=13|728=0|730=1.06572|731=1|734=0|912=Y|9000=1|9040=-6.08|9041=78911063|9042=20150409-17:03:56|9043=1.12979|9044=20150519-03:30:43|9048=U100D1_16679142D2EE08ABE053142B3C0A452A_05192015032653174913_QCV-127|9049=FXTS|9052=640.7|9053=0.8|9054=204437509|453=1|448=FXCM ID|447=D|452=3|802=4|523=32|803=26|523=d101968168|803=2|523=fix-test112|803=22|523=1958448|803=10|702=1|703=TQ|704=10000|753=1|707=CASH|708=0|10=042|
+```
+
+## Order
+
+*	Please set account number on tag 1, 1=00648329 when you place orders. Otherwise you will get error "No Account specified".
+*	Place market order via 35=D. you will get execution report in 35=8
+
+```
+Open market position:
+20160411-06:16:50.909 : 8=FIX.4.4 9=163 35=D 34=7 49=D101546502001_client1 52=20160411-06:16:50.909 56=FXCM 57=U100D1 1=01537581 11=635959630109097564 38=10 40=1 54=1 55=SPX500 59=1 60=20160411-06:16:50 10=054
+
+Sample execution report 35=8
+20160411-06:16:51.399 : 8=FIX.4.4 9=478 35=8 34=15 49=FXCM 50=U100D1 52=20160411-06:16:51.177 56=D101546502001_client1 1=01537581 6=2047.53 11=635959630109097564 14=10 15=USD 17=821172034 31=2047.53 32=10 37=225909074 38=10 39=2 40=1 44=2047.53 54=1 55=SPX500 58=Executed 59=1 60=20160411-06:16:51 99=0 150=F 151=0 211=0 336=FXCM 625=U100D1 835=0 836=0 1094=0 9000=1010 9041=89603919 9050=OM 9051=F 9061=0 453=1 448=FXCM ID 447=D 452=3 802=4 523=1537581 803=10 523=d101546502001 803=2 523=Halpert 803=22 523=32 803=26 10=088
+
+```
+## Sample
+*	Sample programs in C++/C#/Java are [here](https://github.com/fxcm/FIXAPI/tree/master/Sample%20Projects)
+
+## Disclaimer
+
+Trading forex/CFDs on margin carries a high level of risk and may not be suitable for all investors as you could sustain losses in excess of deposits. Leverage can work against you. The products are intended for retail and professional clients. Due to the certain restrictions imposed by the local law and regulation, German resident retail client(s) could sustain a total loss of deposited funds but are not subject to subsequent payment obligations beyond the deposited funds. Be aware and fully understand all risks associated with the market and trading. Prior to trading any products, carefully consider your financial situation and experience level. If you decide to trade products offered by FXCM Australia Pty. Limited (“FXCM AU”) (AFSL 309763), you must read and understand the Financial Services Guide, Product Disclosure Statement, and Terms of Business. Any opinions, news, research, analyses, prices, or other information is provided as general market commentary, and does not constitute investment advice. FXCM will not accept liability for any loss or damage, including without limitation to, any loss of profit, which may arise directly or indirectly from use of or reliance on such information. FXCM will not accept liability for any loss or damage, including without limitation to, any loss of profit, which may arise directly or indirectly from use of or reliance on such information.
