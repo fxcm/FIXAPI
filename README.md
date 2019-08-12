@@ -1,3 +1,8 @@
+CFDs are complex instruments and come with a high risk of losing money rapidly due to leverage.
+
+**70.96% of retail investor accounts lose money when trading CFDs with this provider.**
+
+You should consider whether you understand how CFDs work and whether you can afford to take the high risk of losing your money.
 
 # FIX API
 > *Based on FIX designed for institutional traders.*
@@ -106,12 +111,6 @@ Sample execution report 35=8
 *	Sample programs in C++/C#/Java are [here](https://github.com/fxcm/FIXAPI/tree/master/Sample%20Projects)
 
 ## Disclaimer:
-
-CFDs are complex instruments and come with a high risk of losing money rapidly due to leverage.
-
-**70.96% of retail investor accounts lose money when trading CFDs with this provider.**
-
-You should consider whether you understand how CFDs work and whether you can afford to take the high risk of losing your money.
 
 High Risk Investment Notice: 
 
