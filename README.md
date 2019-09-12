@@ -110,7 +110,7 @@ Sample execution report 35=8
 
 ## Limit Order
 
-*	There are two cases of limit order base do TIF and they are different
+*	There are two cases of limit order base on TIF and they are different
 *	Case 1: TIF tag59 as GTC/GTD limit order: it work like entry order, because order will be executed in the future. If long limit price <= Ask. 
 
 ```
