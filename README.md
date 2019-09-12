@@ -107,6 +107,24 @@ Sample execution report 35=8
 20160411-06:16:51.399 : 8=FIX.4.4 9=478 35=8 34=15 49=FXCM 50=U100D1 52=20160411-06:16:51.177 56=D101546502001_client1 1=01537581 6=2047.53 11=635959630109097564 14=10 15=USD 17=821172034 31=2047.53 32=10 37=225909074 38=10 39=2 40=1 44=2047.53 54=1 55=SPX500 58=Executed 59=1 60=20160411-06:16:51 99=0 150=F 151=0 211=0 336=FXCM 625=U100D1 835=0 836=0 1094=0 9000=1010 9041=89603919 9050=OM 9051=F 9061=0 453=1 448=FXCM ID 447=D 452=3 802=4 523=1537581 803=10 523=d101546502001 803=2 523=Halpert 803=22 523=32 803=26 10=088
 
 ```
+
+## Limit Order
+
+*	There are two cases of limit order base do TIF and they are different
+*	Case 1: TIF tag59 as GTC/GTD limit order: it work like entry order, because order will be executed in the future. If long limit price <= Ask. 
+
+```
+DEBUG (2016-01-18 21:15:54,015) [QF/J Session dispatcher: FIX.4.4:FXCM/MINIREAL->1601094176_client2] (app) - <<< app message from counterparty: 8=FIX.4.4|9=182|35=D|34=522|49=1601094176_client2|52=20160119-02:15:54|56=FXCM|57=MINIREAL|1=1601094176|11=F029d160118t211554L0015|38=21000|40=2|44=0.68657|54=1|55=AUD/USD|59=1|60=20160119-02:15:54|10=022|
+
+```
+
+*	Case 2: TIF as IOC/FOK. it is executed immediately at market. for buy limit IOC, limit price should >= Ask
+
+```
+DEBUG (2016-01-18 23:15:54,053) [QF/J Session dispatcher: FIX.4.4:FXCM/MINIREAL->1601094176_client2] (app) - <<< app message from counterparty: 8=FIX.4.4|9=181|35=D|34=804|49=1601094176_client2|52=20160119-04:15:54|56=FXCM|57=MINIREAL|1=1601094176|11=F085d160118t231554L0044|38=7000|40=2|44=1.45063|54=1|55=USD/CAD|59=3|60=20160119-04:15:54|10=217|
+
+```
+
 ## Sample
 *	Sample programs in C++/C#/Java are [here](https://github.com/fxcm/FIXAPI/tree/master/Sample%20Projects)
 
