@@ -13,6 +13,7 @@ VS2017 Solution
 QuickFIX FIX Engine
 
 [Download](https://github.com/fxcm/FIXAPI/blob/master/Sample%20Projects/fix_example_x64.7z)
+[User manual](https://github.com/fxcm/FIXAPI/blob/master/Sample%20Projects/FIX%20-%20C%2B%2B%20example%20program%20guide.pdf)
 
 ### General C# .NET FIX Example:
 VS2010 Solution
