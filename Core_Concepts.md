@@ -288,8 +288,6 @@ FIX API does not have a field which represents account equity. Equity is a real-
 StartCash(921)
 The StartCash (921) field from CollateralReport is the equity value of the account at 5:00pm EST (New York). This can be used as a snapshot of what the equity was at that time. This value will include the account balance and any profit or loss on open trades.
 
-#### Want to retrieve short version of market price:
-FXCM give client an opportunity to retrieve market price for just Bid/Ask, please follow instructions at [here](https://docs.fxcorporate.com/api-message-info.pdf)
 
 #### EMF
 
