@@ -130,6 +130,13 @@ DEBUG (2016-01-18 23:15:54,053) [QF/J Session dispatcher: FIX.4.4:FXCM/MINIREAL-
 *	Please send mail to api@fxcm.com if you want test it.
 
 
+## Performance improvment release 
+We did some performance improvement and released to Demo. It should transparent to API users.
+
+However, you are welcome to test your current setting on Demo and contact api@fxcm.com if you experience any issues.
+
+If everything goes well, we plan to release to Production by the end of next week. Dec 17 2022.
+
 ## Disclaimer:
 
 High Risk Investment Notice: 
