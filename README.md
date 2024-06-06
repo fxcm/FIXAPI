@@ -122,14 +122,6 @@ DEBUG (2016-01-18 23:15:54,053) [QF/J Session dispatcher: FIX.4.4:FXCM/MINIREAL-
 ## Sample
 *	Sample programs in C++/C#/Java are [here](https://github.com/fxcm/FIXAPI/tree/master/Sample%20Projects)
 
-## SBE Simple Binary Encoding (SBE)
-*	The Simple Binary Encoding (SBE) was developed and originated by the High Performance Working Group within the FIX protocol limited (FPL) organization. 
-*	The goal was to create a binary encoding that was both fast and compact in the spirit of the FIX message. It is particularly targeted and optimized for low-latency applications. 
-*	FXCM has leveraged the open source SBE reference implementation created by “Real-Logic” for our implementation of the encoding.
-*	You can check our documents at [here](https://apiwiki.fxcorporate.com/api/fix/SBE_FastPath/FXCM%20SBE%20Market%20Data%20FastPATH.pdf)
-*	Please send mail to api@fxcm.com if you want test it.
-
-
 ## Performance improvment release 
 We did some performance improvement and released to Demo. It should transparent to API users.
 
