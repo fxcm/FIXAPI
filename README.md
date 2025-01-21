@@ -51,7 +51,6 @@ Example Logon Messages
 
 *	Also we don't have liquidity size information and depth information, only display BBO (best bid offer).
 
-*	If you want shrink price data which is 60% of current market price, please take a look at [here](https://apiwiki.fxcorporate.com/api/fix/FIXShorteneMessage.docx)
 ```
 8=FIX.4.4|9=497|35=W|34=4|49=FXCM|50=U100D1|52=20180817-13:44:06.495|56=MD_d101968187_client1|55=EUR/JPY|228=1|231=1|460=4|9001=3|9002=0.01|9005=10|9011=0|9020=0|9080=1|9090=0|9091=0|9092=0|9093=0|9094=50000000|9095=1|9096=O|268=4|269=0|270=126.085|271=0|272=20180817|273=13:44:06.000|336=FXCM|625=PSFX|276=A|282=PSFX_DESK|299=FXCM-EURJPY-19288641|537=1|269=1|270=126.093|271=0|272=20180817|273=13:44:06.000|336=FXCM|625=PSFX|276=A|282=PSFX_DESK|299=FXCM-EURJPY-19288641|537=1|269=7|270=126.448|269=8|270=125.567|10=117|
 ```
