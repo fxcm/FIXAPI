@@ -1,13 +1,23 @@
-# FIX API
-> *Based on FIX designed for institutional traders.*
+## FXCM FIX API Overview
+The FXCM FIX API, built on the Financial Information eXchange (FIX) Protocol 4.4, is a high-performance, real-time solution tailored for institutional clients. It supports up to 200 price updates per second, offering unmatched speed and reliability compared to other APIs. This API provides access to FXCM's full suite of trading order types, making it our most advanced and widely adopted connectivity option.
+### Key Features
 
-FIX API using FIX Protocol 4.4 designed for real-time, custom institutional interface which push up to 200 price update per second (not available on other APIs). It is our fastest and most popular solution. You will get full range of trading order types available at FXCM.
+*	High-Speed Performance: Delivers up to 200 price updates per second for real-time market data.
+*	Comprehensive Order Types: Access to all FXCM trading order types, enabling flexible and sophisticated trading strategies.
+*	Industry-Standard Protocol: Utilizes FIX Protocol 4.4, ensuring compatibility with institutional trading systems.
+*	Robust and Scalable: Designed to meet the demanding requirements of high-frequency trading environments.
 
-In order to establish and maintain FIX connectivity, you must have an application that manages a network connection and which sends/receives FIX messages. An application that does this is referred to as a FIX engine. Today there are numerous commercial FIX engines as well as open-source alternatives, the most known of which is QuickFIX
+### Connectivity Requirements
+*	To establish and maintain FIX connectivity, clients must deploy an application capable of managing network connections and sending/receiving FIX messages. This application, commonly known as a FIX engine, can be a commercial solution or an open-source option, such as QuickFIX, a widely recognized and reliable choice.
+*	Trading Session Schedule
+FXCM trading sessions reset weekly, with the following schedule:
 
-FXCM trading session reset weekly, it opens on Sundays between 5:00 PM ET and 5:15 PM ET. and closes on Fridays at 4:55 PM ET.
+Opening: Sundays between 5:00 PM and 5:15 PM Eastern Time (ET).
+Closing: Fridays at 4:55 PM ET.
 
-Please refer to our [github page](https://github.com/fxcm/FIXAPI)
+### Getting Started
+*	To integrate the FXCM FIX API, ensure your FIX engine is configured to support FIX Protocol 4.4 and establish a secure network connection with FXCM's servers. For detailed setup instructions and technical specifications, please refer to FXCM's official API documentation or contact our support team.
+
 
 ## Contents
 * [Prerequisites](#Prerequisites)
