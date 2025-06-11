@@ -1,8 +1,5 @@
 ## Core Concepts:
 
-### Getting Connected:
-After your application has created a FIX session, you can begin sending and receiving FIX messages. However, there is a sequence of messages that should be sent prior to conducting any other messaging activity. These messages are described below.
-
 #### Logon (A)
 This is the first message that you must send. Any messages you send before this will be ignored. There are two ways to Logon, one is within the Logon message should include your Username(553) and Password(554). The other one is send Username(553) and Password(554) on User Request (35=BE). It is also important to note here that FXCM requires the TargetSubID on all messages, including your Logon. If you are not receiving any responses to your Logon message, it is likely because you have not included TargetSubID
 
